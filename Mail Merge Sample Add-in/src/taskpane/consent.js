@@ -1,11 +1,12 @@
 (() => {
     // The initialize function must be run each time a new page is loaded
     Office.initialize = () => {
+      const msalUrl = location.href.substring(0, location.href.lastIndexOf('/')) + '/consent.html';
       const msalClient = new msal.PublicClientApplication({
           auth: {
             clientId: 'YOUR_APP_ID_HERE',
             authority: 'https://login.microsoftonline.com/common',
-            redirectUri: 'https://localhost:3000/consent.html' // Must be registered as "spa" type
+            redirectUri: msalUrl // Must be registered as "spa" type
           },
           cache: {
             cacheLocation: 'localStorage', // needed to avoid "login required" error

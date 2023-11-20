@@ -24,7 +24,7 @@ class DialogAPIAuthProvider {
 
   async login() {
     return new Promise((resolve, reject) => {
-      const dialogLoginUrl = `${location.protocol}//${location.hostname}${location.port ? ':' + location.port : ''}/consent.html`;
+      const dialogLoginUrl = location.href.substring(0, location.href.lastIndexOf('/')) + '/consent.html';
       Office.context.ui.displayDialogAsync(
         dialogLoginUrl,
         { height: 60, width: 60 },
