@@ -37,12 +37,15 @@ npm run validate
 
 For more information on manifest validation, refer to our [add-in manifests documentation](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests).
 
-
 ## Taskpane folder
 
 Taskpane folder contains all the Main Page Drawing, Mail Merge code-logic and Graph Consent Process.
 
 1. The `taskpane.html` file is the main page of the whole project. In our sample project, we use several `text-area boxes` and `buttons` to interact with the backend for data and commands.
+
+- **Note**: The taskpane.html file contains an image URL that tracks diagnostic data for this sample add-in. Please remove the image tag if you reuse this sample in your own code project.
+
+    &lt img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/excel-add-in-mail-merge" &gt
 
 2. The `taskpane.js` file contains the main code logic of the whole add-in.
 - `createSampleData()` function using Excel JavaScript API to interact with the workbook. Insert a sample table named "InvoiceTable" and fill it with the necessary data(email address) and other information.
