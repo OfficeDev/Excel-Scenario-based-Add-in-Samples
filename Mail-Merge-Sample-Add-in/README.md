@@ -14,6 +14,9 @@ languages:
 
 This sample demonstrates how to use the Microsoft Graph JavaScript SDK to send emails in Excel from Office Add-ins.
 
+## Applies to
+- Excel on Windows, Mac, and Online.
+
 # Required Steps & How to Run
 
 ## Prerequisites
@@ -30,6 +33,7 @@ If you don't have a Microsoft account, there are a couple of options to get a fr
 
 ## Register a web application with the Azure Active Directory admin center
 
+
 1. Open a browser and navigate to the [Microsoft Entra admin center](https://aad.portal.azure.com). Login using a **personal account** (aka: Microsoft Account) or **Work or School Account**.
 
 1. Select **Identity** in the left-hand navigation, then select **App registrations** under **Applications**.
@@ -42,6 +46,9 @@ If you don't have a Microsoft account, there are a couple of options to get a fr
 
 1. Select **Register**. On the **Office Add-in Graph Tutorial** page, copy the value of the **Application (client) ID** and save it, you will need it in the next step.
 
+
+**Note**: This step needs to be **performed only once** by add-in developer, aiming to integrating your app with the Microsoft identity platform and establishing the information that it uses to get tokens. After successful registration and add-in published, **customer can use it directly**, do not need to register again. 
+
 ## Configure the sample
 
 1. Edit the `consent.js` file and make the following changes.
@@ -52,7 +59,7 @@ If you don't have a Microsoft account, there are a couple of options to get a fr
     npm install
     ```
 
-## Run the sample
+## Run the sample on Windows and Mac
 
 Run the following command in your CLI to start the application.
 ```
@@ -64,11 +71,11 @@ npm start
 
 A webpack server will be hosted on https://localhost:3000/, as the CLI shows:
 
-![](https://github.com/SiruiSun-MSFT/Mail-Management-Add-in-for-Excel/blob/main/assets/webpack.png)
+![](./assets/webpack.png)
 
-An Excel desktop application will be auto-launched and the Mail Merge Addin will be auto-run on the right taskpane area.
+An Excel desktop application will be auto-launched and the Mail Merge Addin will be auto-run on the right taskpane area. The sideload steps has been integrated into the process, eliminating the need for manual intervention.
 
-![](https://github.com/SiruiSun-MSFT/Mail-Management-Add-in-for-Excel/blob/main/assets/taskpane.png)
+![](./assets/taskpane.png)
 
 Please follow the steps below:
 
@@ -78,11 +85,36 @@ Please follow the steps below:
 
 3. Send Email, which will pop up a dialog to get the consent of Microsoft Graph. After sign-in, the email will be send out.
 
-![](https://github.com/SiruiSun-MSFT/Mail-Management-Add-in-for-Excel/blob/main/assets/mail.png)
+    ![](./assets/mail.png)
+
+## Sideload the sample add-in on Excel Online
+
+The previous steps show you how to run our sample on Desktop. As for the Excel Online, please follow the following steps to sideload the manifest.xml file on web.
+
+1.  **Keep the webpack server on** to host your sample add-in.
+1.  Open [Office on the web](https://office.live.com/).
+1.  Choose **Excel**, and then open a new document.
+1.  On the **Home** tab, in the **Add-ins** section, choose **Add-ins** and click **More Add-ins** on the lower-right corner to open Add-in Store Page.
+1.  On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
+
+    ![](./assets/manageAddins.png)
+
+1.  Browse to the localhost add-in manifest file(manifest-localhost.xml), and then select **Upload**.
+
+    ![](./assets/localhostXML.png)
+
+1.  Verify that the add-in loaded successfully. 
+
+## Additional resources
+You may explore additional resources at the following links:
+- [Office Add-ins code samples](https://github.com/OfficeDev/Office-Add-in-samples)
+- [Office Add-ins documentation](https://learn.microsoft.com/en-us/office/dev/add-ins/)
 
 ## Questions and comments
 
-We'd love to get your voice about the Microsoft Excel Mail Merge Sample Office Add-in. You can send your feedback to us in the [Survey](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8GFRbAYEV9Hmqgjcbr7lOdUNVAxQklNRkxCWEtMMFRFN0xXUFhYVlc5Ni4u).
+- Did you experience any problems with the sample? [Create an issue](https://github.com/OfficeDev/Office-Add-in-samples/issues/new/choose) and we'll help you out.
+- We'd love to get your feedback about this sample. Go to our [Office samples survey](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8GFRbAYEV9Hmqgjcbr7lOdUNVAxQklNRkxCWEtMMFRFN0xXUFhYVlc5Ni4u) to give feedback and suggest improvements.
+- For general questions about developing Office Add-ins, go to [Microsoft Q&A](https://learn.microsoft.com/answers/topics/office-js-dev.html) using the office-js-dev tag.
 
 ## Code of conduct
 
