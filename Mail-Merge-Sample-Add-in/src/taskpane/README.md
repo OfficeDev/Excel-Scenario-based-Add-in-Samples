@@ -45,7 +45,7 @@ Taskpane folder contains all the Main Page Drawing, Mail Merge code-logic and Gr
 
 - **Note**: The taskpane.html file contains an image URL that tracks diagnostic data for this sample add-in. Please remove the image tag if you reuse this sample in your own code project.
 
-    &lt img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/excel-add-in-mail-merge" &gt
+    < img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/excel-add-in-mail-merge" >
 
 2. The `taskpane.js` file contains the main code logic of the whole add-in.
 - `createSampleData()` function using Excel JavaScript API to interact with the workbook. Insert a sample table named "InvoiceTable" and fill it with the necessary data(email address) and other information.
