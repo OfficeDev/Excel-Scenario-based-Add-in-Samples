@@ -4,7 +4,7 @@
       const msalUrl = location.href.substring(0, location.href.lastIndexOf('/')) + '/consent.html';
       const msalClient = new msal.PublicClientApplication({
           auth: {
-            clientId: 'YOUR_APP_ID_HERE',
+            clientId: '8d733658-f5be-4ba9-bb31-0da453645c49', // YOUR_APP_ID_HERE
             authority: 'https://login.microsoftonline.com/common',
             redirectUri: msalUrl // Must be registered as "spa" type
           },

@@ -47,7 +47,7 @@ If you don't have a Microsoft account, there are a couple of options to get a fr
 1. Select **Register**. On the **Office Add-in Graph Tutorial** page, copy the value of the **Application (client) ID** and save it, you will need it in the next step.
 
 
-**Note**: This step needs to be **performed only once** by add-in developer, aiming to integrating your app with the Microsoft identity platform and establishing the information that it uses to get tokens. After successful registration and add-in published, **customer can use it directly**, do not need to register again. 
+**Note**: This step needs to be **performed only once** by add-in developer, aiming to integrate your app with the Microsoft identity platform and establishing the information that it uses to get tokens. After successful registration and add-in published, **customer can use it directly**, do not need to register again. 
 
 ## Configure the sample
 
