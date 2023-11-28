@@ -9,7 +9,7 @@ xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov=
   <Description DefaultValue="An add-in that shows how to call Microsoft Graph to send email from excel."/>
   <IconUrl DefaultValue="https://officedev.github.io/Excel-Scenario-based-Add-in-Samples/Mail-Merge-Sample-Add-in/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://officedev.github.io/Excel-Scenario-based-Add-in-Samples/Mail-Merge-Sample-Add-in/assets/icon-64.png"/>
-  <SupportUrl DefaultValue="https://www.contoso.com/help"/>
+  <SupportUrl DefaultValue="https://github.com/OfficeDev/Excel-Scenario-based-Add-in-Samples"/>
   <AppDomains>
     <AppDomain>https://www.contoso.com</AppDomain>
   </AppDomains>
