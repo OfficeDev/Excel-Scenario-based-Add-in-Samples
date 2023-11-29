@@ -17,7 +17,7 @@ xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov=
     <Host Name="Workbook"/>
   </Hosts>
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://officedev.github.io/Excel-Scenario-based-Add-in-Samples/Mail-Merge-Sample-Add-in/src/taskpane/taskpane.html"/>
+    <SourceLocation DefaultValue="https://officedev.github.io/Excel-Scenario-based-Add-in-Samples/Mail-Merge-Sample-Add-in/taskpane.html"/>
   </DefaultSettings>
   <Permissions>ReadWriteDocument</Permissions>
   <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
@@ -70,8 +70,8 @@ xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov=
       </bt:Images>
       <bt:Urls>
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812"/>
-        <bt:Url id="Commands.Url" DefaultValue="https://www.contoso.com/commands.html"/>
-        <bt:Url id="Taskpane.Url" DefaultValue="https://officedev.github.io/Excel-Scenario-based-Add-in-Samples/Mail-Merge-Sample-Add-in/src/taskpane/taskpane.html"/>
+        <bt:Url id="Commands.Url" DefaultValue="https://officedev.github.io/Excel-Scenario-based-Add-in-Samples/Mail-Merge-Sample-Add-in/taskpane.html"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://officedev.github.io/Excel-Scenario-based-Add-in-Samples/Mail-Merge-Sample-Add-in/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="Get started with the Excel Graph Mail Merge add-in!"/>
