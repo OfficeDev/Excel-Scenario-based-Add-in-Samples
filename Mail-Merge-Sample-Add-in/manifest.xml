@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
   <Id>b4fa03b8-1eb6-4e8b-a380-e0476be9e019</Id>
   <Version>1.0.0.0</Version>
@@ -9,7 +9,7 @@ xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov=
   <Description DefaultValue="An add-in that shows how to call Microsoft Graph to send email from excel."/>
   <IconUrl DefaultValue="https://officedev.github.io/Excel-Scenario-based-Add-in-Samples/Mail-Merge-Sample-Add-in/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://officedev.github.io/Excel-Scenario-based-Add-in-Samples/Mail-Merge-Sample-Add-in/assets/icon-64.png"/>
-  <SupportUrl DefaultValue="https://github.com/OfficeDev/Excel-Scenario-based-Add-in-Samples"/>
+  <SupportUrl DefaultValue="https://github.com/OfficeDev/Excel-Scenario-based-Add-in-Samples/issues"/>
   <AppDomains>
     <AppDomain>https://www.contoso.com</AppDomain>
   </AppDomains>
