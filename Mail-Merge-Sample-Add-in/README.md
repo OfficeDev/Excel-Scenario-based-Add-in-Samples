@@ -51,7 +51,7 @@ If you don't have a Microsoft account, there are a couple of options to get a fr
 
 ## Configure the sample
 
-1. Edit the `consent.js` file and make the following changes.
+1. Edit the `taskpane.js` file and make the following changes.
     - Replace `YOUR_APP_ID_HERE` with the **Application Id** you got from the App Registration Portal.
 1. In your command-line interface (CLI), navigate to this directory and run the following command to install requirements.
 

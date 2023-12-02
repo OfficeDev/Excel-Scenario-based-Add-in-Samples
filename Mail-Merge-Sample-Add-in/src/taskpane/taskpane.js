@@ -8,7 +8,10 @@
 Office.onReady((info) => {
   // Check that we loaded into Excel
   if (info.host === Office.HostType.Excel) {
-    document.getElementById("sendEmail").onclick = sendEmail;
+    let userClientId = 'YOUR_APP_ID_HERE'; //Register your app at https://aad.portal.azure.com/
+    localStorage.setItem('client-id', userClientId);
+
+    document.getElementById("sendEmail").onclick = checkClientID;
     document.getElementById("createSampleData").onclick = createSampleData;
   }
 });
@@ -24,7 +27,8 @@ class DialogAPIAuthProvider {
 
   async login() {
     return new Promise((resolve, reject) => {
-      const dialogLoginUrl = location.href.substring(0, location.href.lastIndexOf('/')) + '/consent.html';
+      let data = encodeURIComponent(localStorage.getItem('client-id'));
+      const dialogLoginUrl = location.href.substring(0, location.href.lastIndexOf('/')) + `/consent.html?data=${data}`;
       Office.context.ui.displayDialogAsync(
         dialogLoginUrl,
         { height: 60, width: 60 },
@@ -137,15 +141,49 @@ function getStr(str) {
 /**
  * @param {{ preventDefault: () => void; }} evt
  */
-async function sendEmail(evt) {
-
+async function checkClientID(evt) {
   evt.preventDefault();
   clearStatus();
 
+  let userClientId = localStorage.getItem('client-id');
+
+  if (userClientId == "YOUR_APP_ID_HERE") {
+    let resultPromise = new Promise((resolve, reject) => {
+      const dialogLoginUrl = location.href.substring(0, location.href.lastIndexOf('/')) + '/enterClientId.html';
+      Office.context.ui.displayDialogAsync(
+        dialogLoginUrl,
+        { height: 40, width: 40 },
+        result => {
+          if (result.status === Office.AsyncResultStatus.Failed) {
+            reject(result.error);
+          }
+          else {
+            const loginDialog = result.value;
+
+            loginDialog.addEventHandler(Office.EventType.DialogEventReceived, args => {
+              reject(args.error);
+            });
+
+            loginDialog.addEventHandler(Office.EventType.DialogMessageReceived, args => {
+              userClientId = args.message;
+              localStorage.setItem('client-id', userClientId);
+              loginDialog.close();
+
+              sendEmails();
+            });
+          }
+        }
+      );
+    });
+  }
+  else {
+    sendEmails();
+  }
+}
+
+async function sendEmails() {
   const graphClient = MicrosoftGraph.Client.initWithMiddleware({ authProvider: dialogAPIAuthProvider });
-
   await Excel.run(async (context) => {
-
     try {
       const subject = $('#Subject').val();
       const to = $('#ToLine').val();
@@ -273,7 +311,6 @@ async function sendEmail(evt) {
       console.log(`Error: ${JSON.stringify(error)}`);
       showStatus(`Exception sending emails via Graph: ${JSON.stringify(error)}`, true);
     }
-
   })
 }
 // </SendEmailSnippet>

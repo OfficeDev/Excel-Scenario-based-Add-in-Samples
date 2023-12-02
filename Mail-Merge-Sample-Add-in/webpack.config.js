@@ -69,6 +69,10 @@ module.exports = async (env, options) => {
             to: "[name][ext][query]",
           },
           {
+            from: "src/taskpane/enterClientId.*",
+            to: "[name][ext][query]",
+          },
+          {
             from: "manifest*.xml",
             to: "[name]" + "[ext]",
             transform(content) {
