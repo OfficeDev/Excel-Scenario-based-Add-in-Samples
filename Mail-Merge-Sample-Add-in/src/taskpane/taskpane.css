@@ -19,7 +19,7 @@
   width: 95%;
   margin: 0 auto;
   padding: 10px;
-  background-color: #fff;
+  background-color: #EEEEEF;
   border-radius: 5px;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
  }
@@ -27,16 +27,22 @@
 h1 {
     font-family:Arial, sans-serif;
     color:#2d66eb;
-    background-color:#ffffff;
 }
 
 p {
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family:Arial;
     font-size:14px;
     font-style:normal;
     font-weight:normal;
     color:#000000;
-    background-color:#ffffff;
+}
+
+.styled-text p {
+  color: #2d63c8;
+  font-size: 14px;
+  border: none;
+  padding: 10px;
+  line-height: 0;
 }
 
 button {
@@ -73,7 +79,8 @@ input.html-text-box {
 }
 
 .status {
-    margin: 10px;
+    margin: 0;
+    height: 140px;
   }
   
   .status-card {
@@ -86,5 +93,31 @@ input.html-text-box {
   
   .error-msg {
     background-color: #fde7e9;
+  }
+
+  .fixed-footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+    padding: 5px;
+    font-family: Arial, sans-serif;
+    color: #333;
+    border-top: 1px solid #e0e0e0;
+    /* Other styles as needed */
+  }
+
+  .fixed-footer p {
+    margin: 0.5em 0;
+  }
+
+  .fixed-footer a {
+    color: #2d63c8;
+    text-decoration: none;
+  }
+
+  .fixed-footer a:hover {
+    color: #052d58;
+    text-decoration: underline;
   }
   

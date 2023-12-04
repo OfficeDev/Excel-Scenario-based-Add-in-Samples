@@ -152,7 +152,7 @@ async function checkClientID(evt) {
       const dialogLoginUrl = location.href.substring(0, location.href.lastIndexOf('/')) + '/enterClientId.html';
       Office.context.ui.displayDialogAsync(
         dialogLoginUrl,
-        { height: 40, width: 40 },
+        { height: 25, width: 40 },
         result => {
           if (result.status === Office.AsyncResultStatus.Failed) {
             reject(result.error);
@@ -290,6 +290,7 @@ async function sendEmails() {
               catch (error) {
                 console.log(`Error: ${JSON.stringify(error)}`);
                 showStatus(`Exception sending emails via Graph: ${JSON.stringify(error)}`, true);
+                return;
               }
 
               i++;
