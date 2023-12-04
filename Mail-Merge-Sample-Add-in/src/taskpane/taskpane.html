@@ -15,7 +15,7 @@
 
 <body>
     <div class="container">
-    <h1>Mail Merge Example</h1>
+    <h1 style="margin: 8px;">Mail Merge Example</h1>
     <p>Please follow the steps outlined below to delve into the capabilities of Excel add-ins and unlock their potential when
     integrated with the Graph API, specifically in the context of a mail merger.</p>
     <p></p>
@@ -28,7 +28,7 @@
     <P>
         <form method="post" action="">
             <p><strong>To : </strong></p>
-            <p><textarea id="ToLine" cols="50" rows="1" class="html-text-box">&lt;&lt;Email&gt;&gt;</textarea></p>
+            <p><textarea id="ToLine" cols="50" rows="1" class="html-text-box" >&lt;&lt;Email&gt;&gt;</textarea></p>
             <p><strong>Subject : </strong></p>
             <p><textarea id="Subject" cols="50" rows="1" class="html-text-box">Invoice &lt;&lt;Invoice Number&gt;&gt; for &lt;&lt;Name&gt;&gt;</textarea></p>
             <p><strong>Content : </strong></p>
@@ -51,16 +51,22 @@ Contoso Corporation
     <p><strong>Step 3: Send Emails </strong></p>
     <p>Click "Send emails" to send email in bulk using the data in the current spreadsheet. Alternatively, click "Create Draft" to check emails in your Outlook draft before sending them </p>
     <button type="button" id="sendEmail">Send Email</button>
-    <p>Explore the implementation details in our <a href="https://github.com/OfficeDev/Excel-Scenario-based-Add-in-Samples/tree/main">GitHub</a> repository. If you have any feedback, please reach out to us via the
-    provided <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8GFRbAYEV9Hmqgjcbr7lOdUNVAxQklNRkxCWEtMMFRFN0xXUFhYVlc5Ni4u">Forms link</a>.</p>
     <!-- The following image URL tracks diagnostic data for this sample add-in. Please remove the image tag if you reuse this sample in your own code project. -->
     <div style="height: 1px; width: 1px;">
         <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/excel-add-in-mail-merge-localhost">
     </div>
+    <div class="status"></div>
+    <script type="text/javascript" src="./taskpane.js"></script>
+    <div class="fixed-footer">
+        <p  style="font-size: 16px;"><strong>&nbsp;&nbsp;&nbsp;For next steps:</strong><p>
+        <div class="styled-text">
+            <p><strong>&gt&nbsp;<a href="#" onclick="window.open('https://github.com/OfficeDev/Excel-Scenario-based-Add-in-Samples/tree/main/Mail-Merge-Sample-Add-in'); return false;">Start your project from this sample</a></strong></p>
+            <p><strong>&gt&nbsp;<a href="#" onclick="window.open('https://github.com/OfficeDev/Excel-Scenario-based-Add-in-Samples'); return false;">See more samples</a></strong></p>
+            <p><strong>&gt&nbsp;<a href="#" onclick="window.open('https://learn.microsoft.com/en-us/office/dev/add-ins/'); return false;">Office Add-in documentation</a></strong></p>
+        </div>
+    </div>
     </div>
 </body>
 
-<div class="status"></div>
-<script type="text/javascript" src="./taskpane.js"></script>
 
 </html>
