@@ -10,9 +10,6 @@ xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov=
   <IconUrl DefaultValue="https://officedev.github.io/Excel-Scenario-based-Add-in-Samples/Mail-Merge-Sample-Add-in/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://officedev.github.io/Excel-Scenario-based-Add-in-Samples/Mail-Merge-Sample-Add-in/assets/icon-64.png"/>
   <SupportUrl DefaultValue="https://github.com/OfficeDev/Excel-Scenario-based-Add-in-Samples/issues"/>
-  <AppDomains>
-    <AppDomain>https://www.contoso.com</AppDomain>
-  </AppDomains>
   <Hosts>
     <Host Name="Workbook"/>
   </Hosts>
