@@ -4,24 +4,15 @@
 
 This sample demonstrates how to use the Microsoft Graph JavaScript SDK to send emails in Excel from Office Add-ins.
 
-## How the sample add-in works
 ### Features
-- Create Sample Data, including valid email address (required) and other information.
-- Verify Template and Data, the To Line must contain the column name of the email address.
-- Send Email, which will pop up a dialog to get the consent of Microsoft Graph. After sign-in, the email will be send out.
+Create Sample Data, including valid email address (required) and other information.
+![image](https://github.com/MingjiaLiu1995/Word-Scenario-based-Add-in-Samples/assets/107099441/8ce88850-66d0-4880-824c-443595e55172)
 
-### Play the sample add-in demo
-Click the button below and play the sample add-in demo:<br><br>
-[<img src="./assets/button.png" width="120"/>](https://office.live.com/start/Excel.aspx?culture=en-US&omextemplateclient=Excel&omexsessionid=c0a9c7a1-b954-45df-9295-8c1e21201f34&omexcampaignid=none&templateid=WA200006296&templatetitle=Mail%20Merge%20Add-in%20for%20Excel&omexsrctype=1)
-<br>
+Verify Template and Data, the To Line must contain the column name of the email address
+![image](https://github.com/MingjiaLiu1995/Word-Scenario-based-Add-in-Samples/assets/107099441/82ba1d09-3723-44ab-bad1-2be6abd8982f)
 
-#### Note：
-You need to have a Microsoft 365 account to try the sample. You can [sign up for the Microsoft 365 Developer Program](https://developer.microsoft.com/microsoft-365/dev-program) to get a free Microsoft 365 subscription.<br>
-
-### Expected result
-When you click the button, you will open Excel online in a new browser tab, and the sample add-in will launch automatically.
-
-![image](./assets/expected-result.png)
+Send Email, which will pop up a dialog to get the consent of Microsoft Graph. After sign-in, the email will be send out
+![image](https://github.com/MingjiaLiu1995/Word-Scenario-based-Add-in-Samples/assets/107099441/31ec33f6-16dc-4be2-9121-b25e31f2062d)
 
 ## Build, run and debug the sample code
 ### Prerequisites
