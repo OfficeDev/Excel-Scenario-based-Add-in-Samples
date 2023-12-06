@@ -16,6 +16,8 @@ Office.onReady((info) => {
   }
 });
 
+let interacting = false;
+
 class DialogAPIAuthProvider {
   async getAccessToken() {
     if (this._accessToken) {
@@ -24,44 +26,56 @@ class DialogAPIAuthProvider {
       return this.login();
     }
   }
+  
 
   async login() {
-    return new Promise((resolve, reject) => {
-      let data = encodeURIComponent(localStorage.getItem('client-id'));
-      const dialogLoginUrl = location.href.substring(0, location.href.lastIndexOf('/')) + `/consent.html?data=${data}`;
-      Office.context.ui.displayDialogAsync(
-        dialogLoginUrl,
-        { height: 60, width: 60 },
-        result => {
-          if (result.status === Office.AsyncResultStatus.Failed) {
-            reject(result.error);
+    if (interacting) {
+      throw new Error('Interaction already in progress');
+    }
+
+    interacting = true;
+
+    try {
+
+      return new Promise((resolve, reject) => {
+        let data = encodeURIComponent(localStorage.getItem('client-id'));
+        const dialogLoginUrl = location.href.substring(0, location.href.lastIndexOf('/')) + `/consent.html?data=${data}`;
+        Office.context.ui.displayDialogAsync(
+          dialogLoginUrl,
+          { height: 60, width: 60 },
+          result => {
+            if (result.status === Office.AsyncResultStatus.Failed) {
+              reject(result.error);
+            }
+            else {
+              const loginDialog = result.value;
+
+              loginDialog.addEventHandler(Office.EventType.DialogEventReceived, args => {
+                reject(args.error);
+              });
+
+              loginDialog.addEventHandler(Office.EventType.DialogMessageReceived, args => {
+                const messageFromDialog = JSON.parse(args.message);
+
+                loginDialog.close();
+
+                if (messageFromDialog.status === 'success') {
+                  // We now have a valid access token.
+                  this._accessToken = messageFromDialog.result;
+                  resolve(this._accessToken);
+                }
+                else {
+                  // Something went wrong with authentication or the authorization of the web application.
+                  reject(messageFromDialog.result);
+                }
+              });
+            }
           }
-          else {
-            const loginDialog = result.value;
-
-            loginDialog.addEventHandler(Office.EventType.DialogEventReceived, args => {
-              reject(args.error);
-            });
-
-            loginDialog.addEventHandler(Office.EventType.DialogMessageReceived, args => {
-              const messageFromDialog = JSON.parse(args.message);
-
-              loginDialog.close();
-
-              if (messageFromDialog.status === 'success') {
-                // We now have a valid access token.
-                this._accessToken = messageFromDialog.result;
-                resolve(this._accessToken);
-              }
-              else {
-                // Something went wrong with authentication or the authorization of the web application.
-                reject(messageFromDialog.result);
-              }
-            });
-          }
-        }
-      );
-    });
+        );
+      });
+    } finally {
+      interacting = false;
+    } 
   }
 }
 
