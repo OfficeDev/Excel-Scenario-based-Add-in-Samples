@@ -47,49 +47,32 @@ To run the completed project in this folder, you need the following:
     ```
 1. Open the `Excel-Scenario-based-Add-in-Samples/Mail-Merge-Sample-Add-in` folder in Visual Studio Code. You can see the sample code and make code changes to the sample.
 1. To configure the sample, replace `YOUR_APP_ID_HERE` with the **Application Id** you got from the App Registration Portal.
-
 1. Run the following command in your CLI to start the sample add-in on desktop.
     ```console
     npm run build && npm start
     ```
+    A webpack server will be hosted on https://localhost:3000/, as the CLI shows:
 
-### Expected result
+    ![](./assets/webpack.png)
 
-A webpack server will be hosted on https://localhost:3000/, as the CLI shows:
+    An Excel desktop application will be auto-launched and the Mail Merge Addin will be auto-run on the right taskpane area. The sideload steps has been integrated into the process, eliminating the need for manual intervention.
 
-![](./assets/webpack.png)
+    ![](./assets/taskpane.png)
 
-An Excel desktop application will be auto-launched and the Mail Merge Addin will be auto-run on the right taskpane area. The sideload steps has been integrated into the process, eliminating the need for manual intervention.
-
-![](./assets/taskpane.png)
-
-Please follow the steps below:
-
-1. Create Sample Data, including valid email address (required) and other information.
-
-2. Verify Template and Data, the To Line must contain the column name of the email address.
-
-3. Send Email, which will pop up a dialog to get the consent of Microsoft Graph. After sign-in, the email will be send out.
-
-    ![](./assets/mail.png)
-
-### Sideload the sample add-in on Excel Online
-
-The previous steps show you how to run our sample on Desktop. As for the Excel Online, please follow the following steps to sideload the manifest.xml file on web.
-
-1.  **Keep the webpack server on** to host your sample add-in.
-1.  Open [Office on the web](https://office.live.com/).
-1.  Choose **Excel**, and then open a new document.
-1.  On the **Home** tab, in the **Add-ins** section, choose **Add-ins** and click **More Add-ins** on the lower-right corner to open Add-in Store Page.
-1.  On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
-
-    ![](./assets/manageAddins.png)
-
-1.  Browse to the localhost add-in manifest file(manifest-localhost.xml), and then select **Upload**.
-
-    ![](./assets/localhostXML.png)
-
-1.  Verify that the add-in loaded successfully. 
+1. To start debug on Word online, please follow the following steps to sideload the `manifest.xml` file on web.<br>
+    > 1.  **Keep the webpack server on** to host your sample add-in.
+    > 1.  Open [Office on the web](https://office.live.com/).
+    > 1.  Choose **Excel**, and then open a new document.
+    > 1.  On the **Home** tab, in the **Add-ins** section, choose **Add-ins** and click **More Add-ins** on the lower-right corner to open Add-in Store Page.
+    > 1.  On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
+    >    
+    > ![](./assets/manageAddins.png)
+    > 
+    > 1.  Browse to the localhost add-in manifest file(manifest-localhost.xml), and then select **Upload**.
+    > 
+    > ![](./assets/localhostXML.png)
+    > 
+    > 1.  Verify that the add-in loaded successfully. 
 
 ## Additional resources
 You may explore additional resources at the following links:
