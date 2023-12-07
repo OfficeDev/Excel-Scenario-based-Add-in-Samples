@@ -12,7 +12,7 @@ This sample demonstrates how to use the Microsoft Graph JavaScript SDK to send e
 
 ### Play the sample add-in demo
 Click the button below and play the sample add-in demo:<br><br>
-[<img src="./assets/button.png" width="120"/>](https://office.live.com/start/Excel.aspx?culture=en-US&omextemplateclient=Excel&omexsessionid=c0a9c7a1-b954-45df-9295-8c1e21201f34&omexcampaignid=none&templateid=WA200006296&templatetitle=Mail%20Merge%20Add-in%20for%20Excel&omexsrctype=1)
+<a href="https://office.live.com/start/Excel.aspx?culture=en-US&omextemplateclient=Excel&omexsessionid=c0a9c7a1-b954-45df-9295-8c1e21201f34&omexcampaignid=none&templateid=WA200006296&templatetitle=Mail%20Merge%20Add-in%20for%20Excel&omexsrctype=1" target="_blank"><img src="./assets/button.png" width="120"/></a>
 <br>
 
 #### Note：
@@ -40,22 +40,18 @@ To run the completed project in this folder, you need the following:
     > 1. Select **Register**. On the **Office Add-in Graph Tutorial** page, copy the value of the **Application (client) ID** and save it, you will need it in the next step.
     > **Note**: This step needs to be **performed only once** by add-in developer, aiming to integrate your app with the Microsoft identity platform and establishing the information that it uses to get tokens. After successful registration and add-in published, **customer can use it directly**, do not need to register again. 
 
-### Configure the sample
-1. Edit the `taskpane.js` file and make the following changes.
-    - Replace `YOUR_APP_ID_HERE` with the **Application Id** you got from the App Registration Portal.
-1. In your command-line interface (CLI), navigate to this directory and run the following command to install requirements.
-
+### Manually run on your local machine
+1. Run command below to clone the repo and install the project dependency
+    ```console
+    git clone https://github.com/OfficeDev/Excel-Scenario-based-Add-in-Samples.git && cd Excel-Scenario-based-Add-in-Samples/Mail-Merge-Sample-Add-in && npm install
     ```
-    npm install
+1. Open the `Excel-Scenario-based-Add-in-Samples/Mail-Merge-Sample-Add-in` folder in Visual Studio Code. You can see the sample code and make code changes to the sample.
+1. To configure the sample, replace `YOUR_APP_ID_HERE` with the **Application Id** you got from the App Registration Portal.
+
+1. Run the following command in your CLI to start the sample add-in on desktop.
+    ```console
+    npm run build && npm start
     ```
-
-### Run the sample on Windows and Mac
-
-Run the following command in your CLI to start the application.
-```
-npm run build
-npm start
-```
 
 ### Expected result
 
