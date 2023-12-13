@@ -33,7 +33,7 @@ To run the completed project in this folder, you need the following:
 ### Run on your local machine
 #### 1. To run the sample on desktop, please follow the steps provided below.
 
-- Run command below for Windows
+- Run command below in PowerShell for Windows
    ```
    iwr aka.ms/exceladdin/mail -o excelmail.bat; saps excelmail.bat
    ```
