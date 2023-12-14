@@ -28,7 +28,6 @@ When you click the button, you will open Excel online in a new browser tab, and 
 
 To run the completed project in this folder, you need the following:
 - Either a personal Microsoft account with a mailbox on Outlook.com, or a Microsoft work or school account. You can [sign up for the Microsoft 365 Developer Program](https://developer.microsoft.com/microsoft-365/dev-program) to get a free Microsoft 365 subscription.
-- **[Optional]**: If you like to verify the actual email sending feature, follow the procedure to register a web application with the Azure Active Directory admin center. Find more details at [Register a web application with the AAD admin center](https://www.odwebp.svc.ms/embed?smkt=en-us#register-a-web-application-with-the-azure-active-directory-admin-center). Otherwise you can skip this step and proceed to run the sample
 
 ### Run on your local machine
 #### 1. To run the sample on desktop, please follow the steps provided below.
@@ -49,7 +48,7 @@ This script works in Windows or MacOS, and it will automatically execute all the
   
 Stay tuned for expanded platform support on this command.
 
-#### 2. If you have an application ID already, please ensure: 
+#### 2. If you have a web application ID already, please ensure: 
     
 In [Microsoft Entra admin center](https://aad.portal.azure.com) under **Identity > Applications > App registrations**: 
 - Navigate to **Redirect URI**, set the first drop-down to `Single-page application (SPA)` and its value to `https://localhost:3000/consent.html`.
