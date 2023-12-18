@@ -34,7 +34,7 @@ To run the completed project in this folder, you need the following:
 
 - Run command below in PowerShell for Windows
    ```
-   iwr aka.ms/exceladdin/mail -o excelmail.bat; saps excelmail.bat
+   iwr aka.ms/exceladdin/mail -outfile excelmail.bat; saps excelmail.bat
    ```
 - For MacOS:
    ```
