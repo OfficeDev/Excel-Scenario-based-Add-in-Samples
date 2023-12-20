@@ -4,6 +4,7 @@
 
 This sample demonstrates how to use the Microsoft Graph JavaScript SDK to send emails in Excel from Office Add-ins.
 
+## How the sample add-in works
 ### Features
 Create Sample Data, including valid email address (required) and other information.
 ![](./assets/feature1.png)
