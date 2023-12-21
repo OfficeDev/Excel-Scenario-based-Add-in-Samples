@@ -27,9 +27,8 @@ When you click the button, you will open Excel online in a new browser tab, and 
 ### Prerequisites
 
 To run the completed project in this folder, you need the following:
-- [Node.js](https://nodejs.org) installed on your development machine. (**Note:** This tutorial was written with Node version 16.14.0. The steps in this guide may work with other versions, but that has not been tested.)
 - Either a personal Microsoft account with a mailbox on Outlook.com, or a Microsoft work or school account. You can [sign up for the Microsoft 365 Developer Program](https://developer.microsoft.com/microsoft-365/dev-program) to get a free Microsoft 365 subscription.
-- For MacOS only, you need to install a recent version of [Node.js](https://nodejs.org/), [npm](https://www.npmjs.com/get-npm) and [git](https://git-scm.com/download/mac) on your computer. To verify if you've already installed these tools, run the commands `node -v`, `npm -v` and `git --version` in your terminal.
+- For MacOS only, you need to install [Node.js](https://nodejs.org/) (**Note:** This tutorial was written with Node version 16.14.0. The steps in this guide may work with other versions, but that has not been tested) and [git](https://git-scm.com/download/mac) on your computer. To verify if you've already installed these tools, run the commands `node -v` and `git --version` in your terminal.
 
 ### Run on your local machine
 #### 1. To run the sample on desktop, please follow the steps provided below.
@@ -38,7 +37,7 @@ To run the completed project in this folder, you need the following:
    iwr aka.ms/exceladdin/mail -outfile excelmail.bat; saps excelmail.bat
    ```
 This script works in Windows, and it will automatically execute all the required steps for running the sample and opening the code for viewing and editing. The steps include:
-- Install Node.js, npm, git if they are not found on your machine.
+- Install Node.js and git if they are not found on your machine.
 - Download sample project.
 - Launch Visual Studio Code (or launch sample project directory if you don’t have VS Code installed).
 - Run the sample automatically if you choose so.
