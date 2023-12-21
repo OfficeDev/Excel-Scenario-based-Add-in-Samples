@@ -27,18 +27,34 @@ When you click the button, you will open Excel online in a new browser tab, and 
 ### Prerequisites
 
 To run the completed project in this folder, you need the following:
-- [Node.js](https://nodejs.org) installed on your development machine. (**Note:** This tutorial was written with Node version 16.14.0. The steps in this guide may work with other versions, but that has not been tested.)
 - Either a personal Microsoft account with a mailbox on Outlook.com, or a Microsoft work or school account. You can [sign up for the Microsoft 365 Developer Program](https://developer.microsoft.com/microsoft-365/dev-program) to get a free Microsoft 365 subscription.
+- For MacOS only, you need to install [Node.js](https://nodejs.org/) (**Note:** This tutorial was written with Node version 16.14.0. The steps in this guide may work with other versions, but that has not been tested) and [git](https://git-scm.com/download/mac) on your computer. To verify if you've already installed these tools, run the commands `node -v` and `git --version` in your terminal.
 
-### Manually run on your local machine
-#### 1. Run command below to clone the repo and install the project dependency
-```console
-git clone https://github.com/OfficeDev/Excel-Scenario-based-Add-in-Samples.git && cd Excel-Scenario-based-Add-in-Samples/Mail-Merge-Sample-Add-in && npm install
-```
-#### 2. Open the `Excel-Scenario-based-Add-in-Samples/Mail-Merge-Sample-Add-in` folder in Visual Studio Code.You can see the sample code and make code changes to the sample.
+### Run on your local machine
+#### 1. To run the sample on desktop, please follow the steps provided below.
+##### Run command below in PowerShell for Windows
+   ```
+   iwr aka.ms/exceladdin/mail -outfile excelmail.bat; saps excelmail.bat
+   ```
+This script works in Windows, and it will automatically execute all the required steps for running the sample and opening the code for viewing and editing. The steps include:
+- Install Node.js and git if they are not found on your machine.
+- Download sample project.
+- Launch Visual Studio Code (or launch sample project directory if you don’t have VS Code installed).
+- Run the sample automatically if you choose so.
 
-#### 3. If you have an application ID already, please ensure: 
-    
+##### Run command below in terminal for MacOS
+   ```
+   bash <(curl -L -s aka.ms/exceladdin/mail_mac) 
+   ```
+This script works in MacOS, and it will automatically execute all the required steps for running the sample and opening the code for viewing and editing. The steps include:
+- Download sample project.
+- Launch sample project directory（or launch Visual Studio Code if it is installed and configured to support launching from terminal).
+- Run the sample automatically if you choose so.
+  
+Stay tuned for expanded platform support on this command.
+
+#### 2. If you have a web application ID already, please ensure: 
+
 In [Microsoft Entra admin center](https://aad.portal.azure.com) under **Identity > Applications > App registrations**: 
 - Navigate to **Redirect URI**, set the first drop-down to `Single-page application (SPA)` and its value to `https://localhost:3000/consent.html`.
 
@@ -53,9 +69,9 @@ https://aad.portal.azure.com) using a personal or business Microsoft account.
 https://localhost:3000/consent.html`.
 * Click **Register** and copy the value of the **Application (client) ID**.
 
-#### 4. In Visual Studio Code: edit the `taskpane.js` file and replace `YOUR_APP_ID_HERE` with the **Application Id** you got from the App Registration Portal. 
+#### 3. In Visual Studio Code: edit the `taskpane.js` file and replace `YOUR_APP_ID_HERE` with the **Application Id** you got from the App Registration Portal. 
 
-#### 5. Run the following command in your CLI to start the sample add-in on desktop.
+#### 4. Run the following command in your CLI to start the sample add-in on desktop.
 ```console
 npm run start
 ```
