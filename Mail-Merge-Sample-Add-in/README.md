@@ -53,10 +53,10 @@ This script works in MacOS, and it will automatically execute all the required s
   
 Stay tuned for expanded platform support on this command.
 
-#### 2. If you have a web application ID already, please ensure: 
+#### 2. Configure Web Application ID
 
-In [Microsoft Entra admin center](https://aad.portal.azure.com) under **Identity > Applications > App registrations**: 
-- Navigate to **Redirect URI**, set the first drop-down to `Single-page application (SPA)` and its value to `https://localhost:3000/consent.html`.
+If you already have a web application ID, please update your configuration in [Microsoft Entra admin center](https://aad.portal.azure.com):
+-  Under **Identity > Applications > App registrations**, choose your application and navigate to **Redirect URI**, set the first drop-down to `Single-page application (SPA)` and its value to `https://localhost:3000/consent.html`.
 
 Otherwise, if you haven't registered a web application with the Azure Active Directory admin center, please follow the steps below:
 * Log into [Microsoft Entra admin center](
@@ -69,19 +69,23 @@ https://aad.portal.azure.com) using a personal or business Microsoft account.
 https://localhost:3000/consent.html`.
 * Click **Register** and copy the value of the **Application (client) ID**.
 
-#### 3. In Visual Studio Code: edit the `taskpane.js` file and replace `YOUR_APP_ID_HERE` with the **Application Id** you got from the App Registration Portal. 
+#### 3. Enter the **Application ID** in the pop-up window after clicking **Send Emails**
+![](.\assets\enter-client-id.png)
 
-#### 4. Run the following command in your CLI to start the sample add-in on desktop.
-```console
-npm run start
+#### 4. **[Optional]** In Visual Studio Code, edit the `taskpane.js` and replace `YOUR_APP_ID_HERE` with the **Application Id**. Follow the steps below to restart the add-in:
+
+ If you're using Windows, close the webpack server CLI
+ ![](./assets/webpack.png)
+ If you're using macOS, run the following in a terminal:
+ ```command&nbsp;line
+ kill -9 $(lsof -t -i:3000)
+ ```
+ Then run the following command in your CLI to restart the add-in webpack server:
+```command&nbsp;line
+cd Excel_mail_sample/Excel-Scenario-based-Add-in-Samples/Mail-Merge-Sample-Add-in && npm run start
 ```
 
 ### Expected result
-
-A webpack server will be hosted on https://localhost:3000/, as the CLI shows:
-
-![](./assets/webpack.png)
-
 An Excel desktop application will be auto-launched and the Mail Merge Addin will be auto-run on the right taskpane area. The sideload steps has been integrated into the process, eliminating the need for manual intervention.
 
 ![](./assets/taskpane.png)
