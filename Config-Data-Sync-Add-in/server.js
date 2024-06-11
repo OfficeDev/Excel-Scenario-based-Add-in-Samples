@@ -1,15 +1,22 @@
+/*
+ * Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
+ * See LICENSE in the project root for license information.
+ */
 const WebSocket = require('ws');
 const MicrosoftGraph = require("@microsoft/microsoft-graph-client");
 const cors = require('cors');
 require('isomorphic-fetch');
 const express = require('express');
-
 const app = express();
 app.use(cors()); // Enable CORS for all requests
 app.use(express.json()); // for parsing application/json
 
 // Start the server
 app.listen(3001, () => console.log('Server listening on port 3001'));
+
+let accessToken;
+let fileName = "https://graph.microsoft.com/v1.0/me/drive/root:/Demo.xlsx";
+let filePath = "https://graph.microsoft.com/v1.0/me/drive/items";
 
 app.post('/configDataSync', async (req, res) => {
     // Check if the request contains a value
@@ -29,7 +36,7 @@ app.post('/configDataSync', async (req, res) => {
         const client = MicrosoftGraph.Client.initWithMiddleware({ authProvider: dialogAPIAuthProvider });
 
         // Use the Graph client to get the file
-        const file = await client.api('https://graph.microsoft.com/v1.0/me/drive/root:/Demo.xlsx').get();
+        const file = await client.api(fileName).get();
 
         // Set an interval to add a row to the table every req.body.value seconds
         setInterval(async () => {
@@ -41,7 +48,7 @@ app.post('/configDataSync', async (req, res) => {
 
             // Use the Graph client to add a row to the table
             await client
-                .api(`https://graph.microsoft.com/v1.0/me/drive/items/${file.id}/workbook/tables/Table1/rows`)
+                .api(filePath + `/${file.id}/workbook/tables/Table1/rows`)
                 .post(row);
         }, interval);
     }
@@ -50,7 +57,7 @@ app.post('/configDataSync', async (req, res) => {
     res.json({ message: 'Received value' });
 });
 
-let accessToken;
+
 app.post('/graphApi', async (req, res) => {
     // Check if the request contains an access token
     if (req.body.accessToken) {

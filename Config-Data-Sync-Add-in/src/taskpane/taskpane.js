@@ -2,8 +2,12 @@
  * Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
  * See LICENSE in the project root for license information.
  */
-var Buffer = require('buffer/').Buffer;
 /* global console, document, Excel, Office */
+var Buffer = require('buffer/').Buffer;
+let fileName = "https://graph.microsoft.com/v1.0/me/drive/root:/Demo.xlsx";
+let filePath = "https://graph.microsoft.com/v1.0/me/drive/items";
+let transferTokenUrl = "http://localhost:3001/graphApi";
+let configDataSyncUrl = "http://localhost:3001/configDataSync";
 
 Office.onReady((info) => {
   // Check that we loaded into Excel
@@ -19,7 +23,7 @@ Office.onReady((info) => {
       var inputValue = inputElement.value;
 
       // Send the inputValue to server.js
-      fetch('http://localhost:3001/configDataSync', {
+      fetch(configDataSyncUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -71,7 +75,7 @@ class DialogAPIAuthProvider {
 
                 // Send the access token to the server
                 $.ajax({
-                  url: 'http://localhost:3001/graphApi',
+                  url: transferTokenUrl,
                   type: 'POST',
                   data: JSON.stringify({ accessToken: this._accessToken }),
                   contentType: 'application/json',
@@ -128,12 +132,12 @@ async function createSampleData() {
   await Excel.run(async (context) => {
     const emptyExcelFile = Buffer.alloc(0);
     client
-      .api('https://graph.microsoft.com/v1.0/me/drive/root:/Demo.xlsx:/content')
+      .api(fileName + ":/content")
       .put(emptyExcelFile)
       .then((res) => {
         console.log('New Excel file created', res);
 
-        return client.api('https://graph.microsoft.com/v1.0/me/drive/root:/Demo.xlsx').get();
+        return client.api(fileName).get();
       })
       .then((file) => {
         console.log('File:', file);
@@ -145,11 +149,10 @@ async function createSampleData() {
         };
 
         return client
-          .api(`https://graph.microsoft.com/v1.0/me/drive/items/${file.id}/workbook/tables/add`)
+          .api(filePath + `/${file.id}/workbook/tables/add`)
           .post(workbookTable);
       })
       .then((updateResult) => {
-        // console.log('Table added in Excel file', updateResult);
         showStatus("Successfully create Demo.xlsx and add Table into it.", false);
       })
       .catch((error) => {
