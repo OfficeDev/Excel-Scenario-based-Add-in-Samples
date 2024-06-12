@@ -60,7 +60,7 @@ A webpack server will be hosted on https://localhost:3000/, as the CLI shows:
 
 A local server will be hosted on https://localhost:3001/, as the log shows:
 
-![](./assets/server.png)
+![](./assets/serverhost.png)
 
 An Excel desktop application will be auto-launched and the Automatic Data Sync Addin will be auto-run on the right taskpane area. The sideload steps has been integrated into the process, eliminating the need for manual intervention.
 
