@@ -1,4 +1,4 @@
-# Microsoft Excel Config Data Sync Sample Add-in
+# Microsoft Excel Automatic Data Sync Sample Add-in
 
 [![Node.js build](https://github.com/microsoftgraph/msgraph-training-office-addin/actions/workflows/node.js.yml/badge.svg)](https://github.com/microsoftgraph/msgraph-training-office-addin/actions/workflows/node.js.yml) ![License.](https://img.shields.io/badge/license-MIT-green.svg)
 
@@ -12,7 +12,7 @@ This sample demonstrates how to use the Microsoft Graph JavaScript SDK to implem
 - Config your automatic task. Insert the data from Server according to the user setting.
 - Close the file and then open the "Demo.xlsx" file later to see if the data was automatically filled into the file.
 
-![image](./assets/expected-result.png)
+![image](./assets/taskpane.png)
 
 ## Build, run and debug the sample code
 
@@ -62,9 +62,9 @@ A local server will be hosted on https://localhost:3001/, as the log shows:
 
 ![](./assets/server.png)
 
-An Excel desktop application will be auto-launched and the Config Data Sync Addin will be auto-run on the right taskpane area. The sideload steps has been integrated into the process, eliminating the need for manual intervention.
+An Excel desktop application will be auto-launched and the Automatic Data Sync Addin will be auto-run on the right taskpane area. The sideload steps has been integrated into the process, eliminating the need for manual intervention.
 
-![](./assets/expected-result.png)
+![](./assets/taskpane.png)
 
 Please follow the steps below:
 
@@ -105,7 +105,7 @@ Let us know your experience using our sample code for Office add-in development:
 
 ## Copyright
 
-Copyright (c) 2021 Microsoft Corporation. All rights reserved.
+Copyright (c) 2024 Microsoft Corporation. All rights reserved.
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 <br>**Note**: The taskpane.html file contains an image URL that tracks diagnostic data for this sample add-in. Please remove the image tag if you reuse this sample in your own code project.
 <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/excel-add-in-mail-merge-readme">

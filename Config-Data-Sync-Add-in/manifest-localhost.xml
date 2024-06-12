@@ -5,7 +5,7 @@ xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov=
   <Version>1.0.0.0</Version>
   <ProviderName>Contoso</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="Config Data Sync Add-in for Excel"/>
+  <DisplayName DefaultValue="Automatic Data Sync Add-in for Excel"/>
   <Description DefaultValue="An add-in that shows how to implement and configure unattended data synchronization between the server and a specific file."/>
   <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
