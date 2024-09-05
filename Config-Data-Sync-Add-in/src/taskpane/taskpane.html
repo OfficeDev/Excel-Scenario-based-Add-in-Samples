@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    <script type="text/javascript" src="https://alcdn.msauth.net/browser/2.35.0/js/msal-browser.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@microsoft/microsoft-graph-client/lib/graph-js-sdk.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet"
+        href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css" />
+    <link rel="stylesheet" href="taskpane.css" />
+    <title>Config Data Sync</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+    <div class="container">
+        <h1 style="margin: 8px;">Config Data Sync</h1>
+        <p>This sample code demonstrates how to implement and configure unattended automatic data synchronization
+            between the server and a specific file.</p>
+        <p></p>
+        <p><strong>Step 1: Create Sample Data </strong></p>
+        <p>Click on "Create Sample Data" to demo the scenario. The add-in will create a new file named "Demo.xlsx" in the root folder of your OneDrive. After that, insert a blank Table named "Table1" on Sheet1 for the next Data Inseration.</p>
+        <button type="button" id="createSampleData">Create Sample Data</button>
+        <p><strong>Step 2: Config your automatic task </strong></p>
+        <p>Insert the data from server per <input type="number" min="0" step="1" style="width: 30px;"> second</p>
+        <button type="button" id="configDataSync">Config Task To Server</button>
+        <p><strong>Step 3: Check Result </strong></p>
+        <p>You can now close this file and then open the "Demo.xlsx" file on your OneDrive later to see if the data was automatically filled into the file. </p>
+        <!-- The following image URL tracks diagnostic data for this sample add-in. Please remove the image tag if you reuse this sample in your own code project. -->
+        <div style="height: 1px; width: 1px;">
+            <img
+                src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/excel-add-in-mail-merge-localhost">
+        </div>
+        <div class="status"></div>
+        <script type="text/javascript" src="./taskpane.js"></script>
+        <div class="fixed-footer">
+            <p style="font-size: 16px;"><strong>&nbsp;&nbsp;&nbsp;For next steps:</strong>
+            <p>
+            <div class="styled-text">
+                <p><strong>&gt&nbsp;<a href="#"
+                            onclick="window.open('https://github.com/OfficeDev/Excel-Scenario-based-Add-in-Samples/tree/main/Mail-Merge-Sample-Add-in'); return false;">Start
+                            your project from this sample</a></strong></p>
+                <p><strong>&gt&nbsp;<a href="#"
+                            onclick="window.open('https://github.com/OfficeDev/Excel-Scenario-based-Add-in-Samples'); return false;">See
+                            more samples</a></strong></p>
+                <p><strong>&gt&nbsp;<a href="#"
+                            onclick="window.open('https://learn.microsoft.com/en-us/office/dev/add-ins/'); return false;">Office
+                            Add-in documentation</a></strong></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+</html>

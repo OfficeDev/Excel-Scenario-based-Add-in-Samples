@@ -1,4 +1,4 @@
-Office.onReady(function () {
+window.addEventListener('load', function () {
   let params = new URLSearchParams(location.search);
   let userClientId = params.get('data');
   if (userClientId != null) {
@@ -26,7 +26,10 @@ Office.onReady(function () {
     .then(response => {
       // If response is non-null, it means page is returning from AAD with a successful response
       if (response) {
-        Office.context.ui.messageParent(JSON.stringify({ status: 'success', result: response.accessToken }));
+        // Check if the origin of the request is same as the registered redirect URI
+        if (new URL(msalUrl).origin === window.location.origin) {
+          window.opener.postMessage({ status: 'success', result: response.accessToken }, window.location.origin);
+        }
       } else {
         // Otherwise, invoke login
         msalClient.loginRedirect({
@@ -35,12 +38,15 @@ Office.onReady(function () {
       }
     })
     .catch(error => {
-      Office.context.ui.messageParent(JSON.stringify({
-        status: 'failure', result: {
-          errorCode: error.errorCode,
-          errorMessage: error.errorMessage,
-          stack: error.stack,
-        }
-      }));
+      // Check if the origin of the request is same as the registered redirect URI
+      if (new URL(msalUrl).origin === window.location.origin) {
+        window.opener.postMessage({
+          status: 'failure', result: {
+            errorCode: error.errorCode,
+            errorMessage: error.errorMessage,
+            stack: error.stack,
+          }
+        }, window.location.origin);
+    }
     });
 }); 

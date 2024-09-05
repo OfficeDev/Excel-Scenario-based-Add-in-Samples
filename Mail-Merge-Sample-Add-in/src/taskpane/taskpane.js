@@ -4,19 +4,16 @@
  */
 
 /* global console, document, Excel, Office */
-
-Office.onReady((info) => {
-  // Check that we loaded into Excel
-  if (info.host === Office.HostType.Excel) {
-    let userClientId = 'YOUR_APP_ID_HERE'; //Register your app at https://aad.portal.azure.com/
-    localStorage.setItem('client-id', userClientId);
-
-    document.getElementById("sendEmail").onclick = checkClientID;
-    document.getElementById("createSampleData").onclick = createSampleData;
-  }
-});
-
 class DialogAPIAuthProvider {
+  constructor() {
+    this._accessToken = '';
+    this.loginWindow = null;
+    this.messageReceived = new Promise((resolve, reject) => {
+      this.resolveMessageReceived = resolve;
+      this.rejectMessageReceived = reject;
+    });
+  }
+
   async getAccessToken() {
     if (this._accessToken) {
       return this._accessToken;
@@ -29,43 +26,63 @@ class DialogAPIAuthProvider {
     return new Promise((resolve, reject) => {
       let data = encodeURIComponent(localStorage.getItem('client-id'));
       const dialogLoginUrl = location.href.substring(0, location.href.lastIndexOf('/')) + `/consent.html?data=${data}`;
-      Office.context.ui.displayDialogAsync(
-        dialogLoginUrl,
-        { height: 60, width: 60 },
-        result => {
-          if (result.status === Office.AsyncResultStatus.Failed) {
-            reject(result.error);
+
+      this.loginWindow = window.open(dialogLoginUrl, '_blank', 'height=600,width=600');
+
+      if (!this.loginWindow) {
+        reject(showStatus('Failed to open login window', true));
+        return;
+      }
+
+      this.messageReceived
+        .then(() => {
+          if (this.loginWindow) {
+            this.loginWindow.close();
+            this.loginWindow = null;
           }
-          else {
-            const loginDialog = result.value;
-
-            loginDialog.addEventHandler(Office.EventType.DialogEventReceived, args => {
-              reject(args.error);
-            });
-
-            loginDialog.addEventHandler(Office.EventType.DialogMessageReceived, args => {
-              const messageFromDialog = JSON.parse(args.message);
-
-              loginDialog.close();
-
-              if (messageFromDialog.status === 'success') {
-                // We now have a valid access token.
-                this._accessToken = messageFromDialog.result;
-                resolve(this._accessToken);
-              }
-              else {
-                // Something went wrong with authentication or the authorization of the web application.
-                reject(messageFromDialog.result);
-              }
-            });
+          resolve(this._accessToken);
+        })
+        .catch((error) => {
+          if (this.loginWindow) {
+            this.loginWindow.close();
+            this.loginWindow = null;
           }
-        }
-      );
+          reject(showStatus(error, true));
+        });
     });
   }
 }
 
 const dialogAPIAuthProvider = new DialogAPIAuthProvider();
+
+Office.onReady((info) => {
+  // Check that we loaded into Excel
+  if (info.host === Office.HostType.Excel) {
+    let userClientId = 'YOUR_APP_ID_HERE'; //Register your app at https://aad.portal.azure.com/
+    localStorage.setItem('client-id', userClientId);
+
+    document.getElementById("sendEmail").onclick = checkClientID;
+    document.getElementById("createSampleData").onclick = createSampleData;
+
+    window.addEventListener('message', function (event) {
+      // Check the origin of the sender of the message
+      if (event.origin !== location.origin) return;
+
+      const messageFromDialog = event.data;
+
+      if (messageFromDialog.status === 'success') {
+        // We now have a valid access token.
+        dialogAPIAuthProvider._accessToken = messageFromDialog.result;
+        dialogAPIAuthProvider.resolveMessageReceived();
+      }
+      else if (messageFromDialog.status === 'failure') {
+        // Something went wrong with authentication or the authorization of the web application.
+        dialogAPIAuthProvider.rejectMessageReceived(showStatus('Error when consent to Graph.', true));
+      }
+    }, false);
+
+  }
+});
 
 // Display a status
 /**
